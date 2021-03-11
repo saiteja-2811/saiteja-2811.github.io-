@@ -49,9 +49,8 @@ tags: [Left Digit Bias, Cars, linear regression, logistic regression]
 	<p>Woah! 853 out of 975 observations (87.5%) of the data is of class ‘Not Sold’.</p>
 
 <h2><span style="text-decoration: underline;"><strong>Price vs Mile Relationship</strong></span></h2>
-
 	<p>
-	Now let us analyze the relationsship between Price vs Mile. We have observed that, the above plot shows that the price of the car declines with the increase in the number of miles traveled. 
+	Now let us analyze the relationship between Price vs Mile. We have observed that, the above plot shows that the price of the car declines with the increase in the number of miles traveled. 
 	It also shows that the there are a lot of cars with similar selling price i.e. horizontal lines even though the mileage is different and that's because mileage is not the only factor affecting the price.
 	</p>
 	<img src="images/LDB/LDB3.PNG">
@@ -66,22 +65,24 @@ tags: [Left Digit Bias, Cars, linear regression, logistic regression]
 	<img src="images/LDB/LDB5.PNG">
 
 <h2><span style="text-decoration: underline;"><strong>Sold vs Price Relationship</strong></span></h2>
-	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp Let’s build the model with 15 features selected by RFE and test it.</p>
-	<img src="images/creditcard_fraud/code11.PNG">
-	<p>What is the confusion matrix indicating?</p>
-	<p>We 83,070 observations which are 'Not fradulent' and are predicted as 'Not fraudulent', </br>
-	2213 observations which are 'Not fraudulent' but are predicted as 'Fraudulent',</br>
-	13 observations which are 'Fraudulent' and predicted as ‘Not fraudulent’,</br>
-	147 observations which are 'Fraudulent' and predicted as 'Fraudulent'. </br>Our aim is to improve the model so as to decrease the number of wrongly classified observations especially the fraudulent ones.</p>
-	<p>We can improve the model by changing the ‘C’ value (the inverse of regularization strength) and the regularization method. To find the best 'C' value we will do a grid search using the GridSearchCV function. It will search among the all possible combinations of parameters given and calculates scores using validation data and outputs the best parameters. </p>
-	<img src="images/creditcard_fraud/code12.PNG">
-	<p>Using the grid search, we get C = 0.01 and “l2” as the best regularization method in this case. Let’s re-train the model using these parameters. </p>
-	<img src="images/creditcard_fraud/code13.PNG">
-	<h2><span style="text-decoration: underline;"><strong>Testing</strong></span></h2>
-	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp On using our new model on test data, we observe that the number of wrongly classified genuine transactions have decreased but the fradulent ones remain the same.</p>
-	<img src="images/creditcard_fraud/code14.PNG">
-	<p>Some of the other evaluation metrics are recall, f1-score and ROC curve.</p>
-	<img src="images/creditcard_fraud/code15.PNG">
-	<img src="images/creditcard_fraud/code16.PNG">
-	<p>The recall and F-1 score are satisfactory. The ROC is also closer towards the top border indicating the model is effective.</br>
-	Can think of any other ways to predict fraudulent transactions? Build the model and let me know the recall value in the comments!</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp Let’s decompose the price similar to mile and build a logistic regrssion model with 7 features and test the significance of the decomposed prices</p>
+	<img src="images/LDB/LDB6.PNG">
+
+	<p>What do the coeffecients of the decomposed price variables indicate?</p>
+	<p>After observing the results of the above model, we can say that the left digit bias is evident for sold vs decomposed price, because the left digits (pricedol10, pricedol1) are significant with almost 100% confidence ("Pr(>|z|)" < 0.001) whereas the right most ones (pricemd) aren't significant enough to predict the selling probability ("Pr(>|z|)" = 0.726535).
+	</p>
+	
+<h2><span style="text-decoration: underline;"><strong>Inferences</strong></span></h2>
+	<p>
+	We can conclude that the left digit bias exists when a consumer is trying to purchase a used car.
+	Therefore, the store managers can be more proactive while setting a price for the car i.e. they can increase the last digits part of the price for more profit margin.
+	</p>
+	
+	<p>
+	But left digit bias can be across multiple variables i.e. in the above example, it is price and miles.
+	But both these variables can be interdependent with each other. So the store managers can take the left digit bias into account, but focus on the most important variable to apply this left digit bias.
+	</p>
+	
+	<p>
+	Thanks for reading this :) . Let me know you thoughts about this article in the comments!
+	</p>
