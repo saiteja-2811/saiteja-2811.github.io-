@@ -40,25 +40,12 @@ In this post, we will build a binary logistic model as our response variable is 
 <h2><span style="text-decoration: underline;"><strong>Data Preparation</strong></span></h2>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp We will prepare our data for training. Load the required libraries and read the csv file. You can download the dataset from <a href = "https://github.com/saiteja-2811/DDM---Left-Digit-Bias---Cars" target = "_blank">here.</a>
 </p>
-<img src="images/creditcard_fraud/code1.PNG">
-<p> As discussed before there are 7 independent variables, but we have modelyear and month as factor variables. We set a base for these factor variables and proceed to make the model. Class is our response variable. There are 945 rows and 8 columns.</p>
-<img src="images/creditcard_fraud/code2.PNG">
+<p> As discussed before there are 7 independent variables, but we have modelyear and month as factor variables. We set a base for these factor variables and proceed to make the model. Class is our response variable. There are 975 rows and 8 columns.</p>
+<img src="images/LDB/LDB1.PNG">
 <p>There are no missing values in the dataset. Let’s look at the proportion of classes.</p>
-<img src="images/creditcard_fraud/code3.PNG">
-<p>Woah! 284,315 out of 284,807 observations (99.8%) of the data is of class ‘Not Fraud’. Even if we predict all the transactions as not fraudulent, we will have a 99.8% accuracy and this is why accuracy is not a good measure in classification problems.</p>
-<p>Let's look at the distribution of 'Amount' and 'Time' features.</p>
-<img src="images/creditcard_fraud/code4.PNG">
-<p>The distribution of transaction amount shows that it is skewed. We will apply a log transformation to correct it.</p>
-<img src="images/creditcard_fraud/code5.PNG">
-<img src="images/creditcard_fraud/code6.PNG">
-<p>Transaction time distribution shows that most transactions happened during day time. Since transaction time is on different scale as compared to other features in our dataset, we need to scale the data. Also, the function for logistic regression used in this post uses regularization which is largely affected by the scale of data.</p>
-<img src="images/creditcard_fraud/code7.PNG">
-<p>We will now split our dataset for training and testing in the ratio 70:30. Our data is highly imbalanced. If we use the same data for training the model, it will be biased towards the ‘0’ class. To account for this, we need to oversample the class ‘1’ observations so that a balanced dataset can be used for training.</p>
-<p> We will use SMOTE to create a balanced dataset. SMOTE stands for Synthetic Minority Over-sampling Technique. To put simply, SMOTE does not create duplicate observations, it creates synthetic samples by selecting similar records and altering the columns one by one by a random amount within the difference between the adjacent records. </p>
-<img src="images/creditcard_fraud/code8.PNG">
-<p>Ahaa! There’s our balanced set with equal propotions of both classes ( 199,032 observations each).</p>
-<p>Do we require all the features in our dataset? We don’t know! Let’s run a recursive feature elimination (RFE) and use only the best features in our model. RFE repeatedly constructs a model by choosing the best or worst performing feature, setting aside the chosen one and continuing the process with the rest of the features. Features are ranked according to when they are eliminated.</p>
-<img src="images/creditcard_fraud/code9.PNG">
+<img src="images/LDB/LDB2.PNG">
+<p>Woah! 853 out of 975 observations (87.5%) of the data is of class ‘Not Sold’.</p>
+
 <p>Let's check the p-values of the selected features using the statsmodel library. The output indicates that all the p-values are zero indicating that the features selected are significant.</p>
 <img src="images/creditcard_fraud/code10.PNG">
 
