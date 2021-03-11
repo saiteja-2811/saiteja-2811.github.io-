@@ -5,67 +5,83 @@ excerpt: Why is it $2.99 and not $3.00?
 permalink: /Left-Digit-Bias-Car-Sellers
 publish: false
 tags: [Left Digit Bias, Cars, linear regression, logistic regression]
-images:
-  - url: /images/creditcard_fraud/cardthief.gif
 ---
 <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 
 <h2><span style="text-decoration: underline;"><strong>Introduction</strong></span></h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In your last trip to the grocery store, you probably noticed many prices end in “99.” like this one here 
-<a href = "https://www.globalprice.info/en/?p=usa/food-prices-in-usa" target="_blank">Food Prices.</a>
- Why do marketers price products this way instead of rounding prices to the nearest whole dollar? 
- While it may seem surprising, such pricing strategies have been very effective in increasing sales and consequently profits as well, by taking the advantage of the left-digit bias. 
- The left-digit bias describes a phenomenon in which consumer's perceptions and evaluations are disproportionately influenced by the left-most digit of the product price.
- But when is this bias more likely to exert influence on consumers?</p>
-<p>In this article, we will be looking at implementing linear and logistic regression models for detecting the presence of left-digit bias.</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In your last trip to the grocery store, you probably noticed many prices end in “99.” like this one here 
+	<a href = "https://www.globalprice.info/en/?p=usa/food-prices-in-usa" target="_blank">Food Prices.</a>
+	 Why do marketers price products this way instead of rounding prices to the nearest whole dollar? 
+	 While it may seem surprising, such pricing strategies have been very effective in increasing sales and consequently profits as well, by taking the advantage of the left-digit bias. 
+	 The left-digit bias describes a phenomenon in which consumer's perceptions and evaluations are disproportionately influenced by the left-most digit of the product price.
+	 But when is this bias more likely to exert influence on consumers?</p>
+	 
+	<p>In this article, we will be looking at implementing linear and logistic regression models for detecting the presence of left-digit bias.</p>
 
 <h2><span style="text-decoration: underline;"><strong>Dataset</strong></span></h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The dataset used in this post is from course work of Data Driven Marketing.<a href = "https://github.com/saiteja-2811/DDM---Left-Digit-Bias---Cars" target="_blank"></a>
- It consists of the attributes of second-hand cars and their sold/unsold status. Due to confidentiality issues, the original features were transformed and shifted.
- The features given in the dataset consists of 7 independent variables.
- 'Mile' is the number of miles the car had travelled and the 'Price' refers to the selling price of the car.
- The response variable, ‘Sold’ is a binary variable indicating 1 for a sold car and 0 otherwise.
-</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The dataset used in this post is from course work of Data Driven Marketing.<a href = "https://github.com/saiteja-2811/DDM---Left-Digit-Bias---Cars" target="_blank"></a>
+	 It consists of the attributes of second-hand cars and their sold/unsold status. Due to confidentiality issues, the original features were transformed and shifted.
+	 The features given in the dataset consists of 7 independent variables.
+	 'Mile' is the number of miles the car had travelled and the 'Price' refers to the selling price of the car.
+	 The response variable, ‘Sold’ is a binary variable indicating 1 for a sold car and 0 otherwise.
+	</p>
 
 <h2><span style="text-decoration: underline;"><strong>Approach</strong></span></h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp The objective is to detect the presence of left-digit bias or not when the customer plans to purchase a car. 
-In Machine Learning terms, this is a classification problem. Here, we will implement a logistic regression model</p>
 
-<h4>Logistic Regression </h4>
-<p>Logistic regression is a type of classification algorithm which is being used since early twentieth century. The algorithm tries to find relationship between the features and probability of a particular outcome.
-Logistic regression is further divided into various sub-types – binary, multinomial, ordinal; depending upon the type of response variable.
-In this post, we will build a binary logistic model as our response variable is binary - ‘Sold’ or ‘Not Sold’.
-</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp The objective is to detect the presence of left-digit bias or not when the customer plans to purchase a car. 
+	In Machine Learning terms, this is a classification problem. Here, we will implement a logistic regression model</p>
+	<h4>Logistic Regression </h4>
+	<p>Logistic regression is a type of classification algorithm which is being used since early twentieth century. The algorithm tries to find relationship between the features and probability of a particular outcome.
+	Logistic regression is further divided into various sub-types – binary, multinomial, ordinal; depending upon the type of response variable.
+	In this post, we will build a binary logistic model as our response variable is binary - ‘Sold’ or ‘Not Sold’.
+	</p>
 
 <h2><span style="text-decoration: underline;"><strong>Data Preparation</strong></span></h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp We will prepare our data for training. Load the required libraries and read the csv file. You can download the dataset from <a href = "https://github.com/saiteja-2811/DDM---Left-Digit-Bias---Cars" target = "_blank">here.</a>
-</p>
-<p> As discussed before there are 7 independent variables, but we have modelyear and month as factor variables. We set a base for these factor variables and proceed to make the model. Class is our response variable. There are 975 rows and 8 columns.</p>
-<img src="images/LDB/LDB1.PNG">
-<p>There are no missing values in the dataset. Let’s look at the proportion of classes.</p>
-<img src="images/LDB/LDB2.PNG">
-<p>Woah! 853 out of 975 observations (87.5%) of the data is of class ‘Not Sold’.</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp We will prepare our data for training. Load the required libraries and read the csv file. You can download the dataset from <a href = "https://github.com/saiteja-2811/DDM---Left-Digit-Bias---Cars" target = "_blank">here.</a>
+	</p>
 
-<p>Let's check the p-values of the selected features using the statsmodel library. The output indicates that all the p-values are zero indicating that the features selected are significant.</p>
-<img src="images/creditcard_fraud/code10.PNG">
+	<p> As discussed before there are 7 independent variables, but we have modelyear and month as factor variables. We set a base for these factor variables and proceed to make the model. Class is our response variable. There are 975 rows and 8 columns.</p>
+	<img src="images/LDB/LDB1.PNG">
 
-<h2><span style="text-decoration: underline;"><strong>Training the model</strong></span></h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp Let’s build the model with 15 features selected by RFE and test it.</p>
-<img src="images/creditcard_fraud/code11.PNG">
-<p>What is the confusion matrix indicating?</p>
-<p>We 83,070 observations which are 'Not fradulent' and are predicted as 'Not fraudulent', </br>
-2213 observations which are 'Not fraudulent' but are predicted as 'Fraudulent',</br>
-13 observations which are 'Fraudulent' and predicted as ‘Not fraudulent’,</br>
-147 observations which are 'Fraudulent' and predicted as 'Fraudulent'. </br>Our aim is to improve the model so as to decrease the number of wrongly classified observations especially the fraudulent ones.</p>
-<p>We can improve the model by changing the ‘C’ value (the inverse of regularization strength) and the regularization method. To find the best 'C' value we will do a grid search using the GridSearchCV function. It will search among the all possible combinations of parameters given and calculates scores using validation data and outputs the best parameters. </p>
-<img src="images/creditcard_fraud/code12.PNG">
-<p>Using the grid search, we get C = 0.01 and “l2” as the best regularization method in this case. Let’s re-train the model using these parameters. </p>
-<img src="images/creditcard_fraud/code13.PNG">
-<h2><span style="text-decoration: underline;"><strong>Testing</strong></span></h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp On using our new model on test data, we observe that the number of wrongly classified genuine transactions have decreased but the fradulent ones remain the same.</p>
-<img src="images/creditcard_fraud/code14.PNG">
-<p>Some of the other evaluation metrics are recall, f1-score and ROC curve.</p>
-<img src="images/creditcard_fraud/code15.PNG">
-<img src="images/creditcard_fraud/code16.PNG">
-<p>The recall and F-1 score are satisfactory. The ROC is also closer towards the top border indicating the model is effective.</br>
-Can think of any other ways to predict fraudulent transactions? Build the model and let me know the recall value in the comments!</p>
+	<p>Let’s look at missing values and the proportion of classes.</p>
+	<img src="images/LDB/LDB2.PNG">
+
+	<p>Woah! 853 out of 975 observations (87.5%) of the data is of class ‘Not Sold’.</p>
+
+<h2><span style="text-decoration: underline;"><strong>Price vs Mile Relationship</strong></span></h2>
+
+	<p>
+	Now let us analyze the relationsship between Price vs Mile. We have observed that, the above plot shows that the price of the car declines with the increase in the number of miles traveled. 
+	It also shows that the there are a lot of cars with similar selling price i.e. horizontal lines even though the mileage is different and that's because mileage is not the only factor affecting the price.
+	</p>
+	<img src="images/LDB/LDB3.PNG">
+
+	<p> Let us decompose the mile into thousands, tens and decimals.</p>
+	<img src="images/LDB/LDB4.PNG">
+
+	<p>Let us check if every component of mile is significant when we set the price based on these values. So we fit a linear regrssion model to predict price with all the decomposed mile variables
+	We can infer that the left digits of the decomposed price (mile10k, mile1k) behave in a similar way that of the mile in the first scatter plot (Negative Coefficient for Estimate).
+	But last mile digits (milermd) are positively affecting the price and not significant enough to predict the price ("Pr(>|z|)" = 0.290184) while the left ones are significant with almost 100% ("Pr(>|z|)" < 0.001)
+	</p>
+	<img src="images/LDB/LDB5.PNG">
+
+<h2><span style="text-decoration: underline;"><strong>Sold vs Price Relationship</strong></span></h2>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp Let’s build the model with 15 features selected by RFE and test it.</p>
+	<img src="images/creditcard_fraud/code11.PNG">
+	<p>What is the confusion matrix indicating?</p>
+	<p>We 83,070 observations which are 'Not fradulent' and are predicted as 'Not fraudulent', </br>
+	2213 observations which are 'Not fraudulent' but are predicted as 'Fraudulent',</br>
+	13 observations which are 'Fraudulent' and predicted as ‘Not fraudulent’,</br>
+	147 observations which are 'Fraudulent' and predicted as 'Fraudulent'. </br>Our aim is to improve the model so as to decrease the number of wrongly classified observations especially the fraudulent ones.</p>
+	<p>We can improve the model by changing the ‘C’ value (the inverse of regularization strength) and the regularization method. To find the best 'C' value we will do a grid search using the GridSearchCV function. It will search among the all possible combinations of parameters given and calculates scores using validation data and outputs the best parameters. </p>
+	<img src="images/creditcard_fraud/code12.PNG">
+	<p>Using the grid search, we get C = 0.01 and “l2” as the best regularization method in this case. Let’s re-train the model using these parameters. </p>
+	<img src="images/creditcard_fraud/code13.PNG">
+	<h2><span style="text-decoration: underline;"><strong>Testing</strong></span></h2>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp On using our new model on test data, we observe that the number of wrongly classified genuine transactions have decreased but the fradulent ones remain the same.</p>
+	<img src="images/creditcard_fraud/code14.PNG">
+	<p>Some of the other evaluation metrics are recall, f1-score and ROC curve.</p>
+	<img src="images/creditcard_fraud/code15.PNG">
+	<img src="images/creditcard_fraud/code16.PNG">
+	<p>The recall and F-1 score are satisfactory. The ROC is also closer towards the top border indicating the model is effective.</br>
+	Can think of any other ways to predict fraudulent transactions? Build the model and let me know the recall value in the comments!</p>
