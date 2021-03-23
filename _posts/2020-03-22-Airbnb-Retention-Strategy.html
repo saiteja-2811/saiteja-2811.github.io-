@@ -1,0 +1,74 @@
+---
+layout: post
+title: Airbnb Targeted Retention Strategy
+excerpt: Why is Airbnb successful?
+permalink: /Left-Digit-Bias-Car-Sellers
+publish: false
+tags: [Airbnb, listings, lasso regression, classification tree, random forest, deviance, error rate]
+---
+<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+
+<h2><span style="text-decoration: underline;"><strong>Introduction</strong></span></h2>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ever wondered how Airbnb changed the entire dynamic of the Hoteling industry? 
+	Not only did Airbnb revolutionize the travel industry, but they are also one of the first startup “unicorns” to emerge in the 
+	mid-2000s and are emulated on every level – from their business model, search results, referral engines to their withholding hosts plans.</p>
+	
+	<p>Airbnb is widely known for convincing people to open their homes and allow guests to stay.
+	But ever imagined, how does Airbnb ensure these hosts are happy enough to keep renting out their property?
+	Do they maintain a retaining strategy and how would that strategy be profitable to the company?</p>
+	
+	<p>To design a retaining campaign, Airbnb needs to find out which properties to target.
+	This case study aims to answer the questions related to the potential hosts who are likely to leave and the best way to retain them.
+	Apart from implementing the retaining strategy, the study also aims to see the value addition due to this retention strategy.
+	</p>
+	 
+	<p>In this article, we will be looking at implementing linear and logistic regression models for detecting the presence of left-digit bias.</p>
+
+<h2><span style="text-decoration: underline;"><strong>Dataset</strong></span></h2>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The dataset contains the attributes of 6559 properties listed on Airbnb at the end of 2015.
+	The features included in the model are monthly reservations in the last one year, the number of months(nmon) and the ratings of the properties.
+	The target variable is the attrition indicator.
+	It is equal to 1 if a property left Airbnb at the beginning of 2016, and 0 otherwise.
+	</p>
+
+<h2><span style="text-decoration: underline;"><strong>Approach</strong></span></h2>
+
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The goal of this study is to find out which properties Airbnb should shortlist for their retaining campaign. 
+	The data provided gives us the total Airbnb properties available in 2016 at the beginning of the year. 
+	We wish to target the properties likely to leave by the end of 2016 with the retaining campaign, so that in 2017 we have higher number of hosts.</p>
+
+<h2><span style="text-decoration: underline;"><strong>Three types of Models</strong></span></h2>
+
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We will be considering 3 types of model for this exercise namely: Lasso regression, Classification Tree and Random Forests.
+	The explanation of the models is provided below:</p>
+
+<h3>What is Lasso Regression?</h3>
+	<img src="images/ABB/Lasso.PNG">
+
+<h3>What is a Classification Tree?</h3>
+	<img src="images/ABB/CTree.PNG">
+	<p>Classification Tree for Airbnb (1 – Attrition, 0 – Retention)</p>
+	<img src="images/ABB/CTree 2.PNG">
+
+	<p>
+	The classification tree calculates whether a property would be exiting or not.
+	With the help of features provided in the model, the classification tree evaluates the attrition indicator.
+	So, a property will be leaving Airbnb if it has reservationdays3 le 3.125, reservationdays1 >= 0.292 and reservationdays3 le 0.125
+	</p>
+
+	<p>
+	We can make numerous rules based on the above tree and use those rules to predict the outcomes for any future properties.
+	</p>
+
+	<p>
+	But, Unfortunately, it is tough to avoid overfitting with Classification Tree.
+	Because, the deep tree structure is so unstable that optimal depth is not easily chosen via cross validation, and there is no theory to fall back on.
+	</p>
+	
+<h3>What are Random forests?</h3>
+	<img src="images/ABB/RF.PNG">
+	<p>Sample Random Forest</p>
+	<img src="images/ABB/RF2.PNG">
+	<p>In the above picture, we can see how an example is classified using n trees where the final prediction is done by taking a vote from all n trees. 
+	In machine learning language, RFs are also called an ensemble or bagging method.
+	I think the bagging word might have come from the analogy that we have just discussed!!!</p>
