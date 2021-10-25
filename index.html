@@ -1,72 +1,274 @@
----
-layout: page
-title: "Hi There!"
-subtitle: "Welcome to PST's Ponderings"
-use-site-title: true
----
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Sai Teja Pasula</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="css/main.css" />
+		<noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
 
-<div class="posts-list">
-  {% for post in paginator.posts %}
-  <article class="post-preview">
-    <a href="{{ post.url | relative_url }}">
-	  <h2 class="post-title">{{ post.title }}</h2>
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
 
-	  {% if post.subtitle %}
-	  <h3 class="post-subtitle">
-	    {{ post.subtitle }}
-	  </h3>
-	  {% endif %}
-    </a>
+				<!-- Intro -->
+					<div id="intro">
+						<h1>My Portfolio</h1>
+						<p>A GLIMPSE OF MY KNOWLEDGE AND EXPERTISE THROUGH MY PROJECTS.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
 
-    <p class="post-meta">
-      Posted on {{ post.date | date: "%B %-d, %Y" }}
-    </p>
+				<!-- Header -->
+					<header id="header">
+						<a class="logo">ABOUT</a>
+					</header>
 
-    <div class="post-entry-container">
-      {% if post.image %}
-      <div class="post-image">
-        <a href="{{ post.url | relative_url }}">
-          <img src="{{ post.image | relative_url }}">
-        </a>
-      </div>
-      {% endif %}
-      <div class="post-entry">
-        {{ post.excerpt | strip_html | xml_escape | truncatewords: site.excerpt_length }}
-        {% assign excerpt_word_count = post.excerpt | number_of_words %}
-        {% if post.content != post.excerpt or excerpt_word_count > site.excerpt_length %}
-          <a href="{{ post.url | relative_url }}" class="post-read-more">[Read&nbsp;More]</a>
-        {% endif %}
-      </div>
-    </div>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="index.html">About</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/sai-teja-pasula-76b2a186/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+							<li><a href="https://github.com/saiteja-2811" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
 
-    {% if post.tags.size > 0 %}
-    <div class="blog-tags">
-      Tags:
-      {% if site.link-tags %}
-      {% for tag in post.tags %}
-      <a href="{{ '/tags' | relative_url }}#{{- tag -}}">{{- tag -}}</a>
-      {% endfor %}
-      {% else %}
-        {{ post.tags | join: ", " }}
-      {% endif %}
-    </div>
-    {% endif %}
+				<!-- Main -->
 
-   </article>
-  {% endfor %}
-</div>
+					<div id="main">
 
-{% if paginator.total_pages > 1 %}
-<ul class="pager main-pager">
-  {% if paginator.previous_page %}
-  <li class="previous">
-    <a href="{{ paginator.previous_page_path | relative_url }}">&larr; Newer Posts</a>
-  </li>
-  {% endif %}
-  {% if paginator.next_page %}
-  <li class="next">
-    <a href="{{ paginator.next_page_path | relative_url }}">Older Posts &rarr;</a>
-  </li>
-  {% endif %}
-</ul>
-{% endif %}
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<h2>My Name Is<br />
+									Sai Teja Pasula</h2>
+									<p>I am a Business Analytics and Information Management graduate from Krannert School of Management, Purdue University. I have an entrepreneurial mindset which derives me to explore new things in order to leverage my programming and imaginative skills.</p>
+								</header>
+								<a href="https://youtu.be/l3W9xAhqMmY" class="image main"><img src="images/e.jpg" alt="" /></a>
+
+								<ul class="actions special">
+									<li><a href="#footer" class="button large">More about me</a></li>
+								</ul>
+							</article>
+
+						<!-- Posts -->
+
+							<header class="major">
+								<h1>My Projects</h1>
+							</header>
+
+							<section class="posts">
+								<article>
+									<header>
+										<h2>Estimating Profitability<br />
+										on Amazon Platform</h2>
+									</header>
+									<a href="images/Poster.jpg" class="image fit"><img src="images/amazz.jpg" alt="" /></a>
+									<p>In collaboration with a multinational CPG company that sells its products on Amazon, the project aims to provide the business an enhanced decision support system for identifying profitable as well as underperforming products using both statistical and machine learning models (ARIMA and LSTM).</p>
+									<ul class="actions special">
+										<li><a href="images/Poster.jpg" class="button">Poster</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										<h2>Coronavirus(COVID-19)<br />
+										Tableau Dashboard - II</h2>
+									</header>
+									<a href="https://public.tableau.com/profile/sobhagya12#!/vizhome/Covid-Trend/Dashboard1" class="image fit"><img src="images/msk2.jpg" alt="" /></a>
+									<p>Created a Tableau Dashboard displaying the Cases and Deathes caused by the novel Coronavirus (Covid -19). This dashboard gives the user the ability to check the total number of cases/deaths, compare it with other countries toggle between cases and death to display it on map. </p>
+									<ul class="actions special">
+										<li><a href="https://public.tableau.com/views/Covid-Trend/Dashboard1?:display_count=y&:origin=viz_share_link" class="button">Dashboard</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										<h2>Coronavirus(COVID-19)<br />
+										Tableau Dashboard - I</h2>
+									</header>
+									<a href="https://public.tableau.com/profile/sobhagya8708#!/vizhome/shared/YXYBQW5DF" class="image fit"><img src="images/coo.jpg" alt="" /></a>
+									<p>Created a Tableau Dashboard displaying the Cases and Deathes caused by the novel Coronavirus (Covid -19) throughout the world. This dashboard gives the user the ability to check the number of cases/deaths on any day and person can toggle between cases and death to display it on map. </p>
+									<ul class="actions special">
+										<li><a href="https://public.tableau.com/views/covid-19_15848392406240/Dashboard1?:display_count=y&:origin=viz_share_link" class="button">Dashboard</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										<h2>Self- Learning<br />
+										Facial Recognition</h2>
+									</header>
+									<a href="https://drive.google.com/file/d/1hTYGFo_E4q4UsOBfr8zskiBtimc8YYiW/view?usp=sharing" class="image fit"><img src="images/facec.jfif" alt="" /></a>
+									<p>A self-learning AI which incorporates machine learning and detects and Identifies faces of people and maintains a database containing information about the person. Two special features of the project. First is its self-learning capabilities, i.e. whenever a new person comes in front of the camera it asks for the person's name and automatically trains itself in order to identify that person in the future. Second is the voice interaction. User inputs data over voice and the AI responds via voice.</p>
+									<ul class="actions special">
+										<li><a href="https://github.com/Sobhagya12/Self-Learning-Facial-Recognition.git" class="button">Git Code</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										<h2>Assistant<br />
+										"Brandy"</h2>
+									</header>
+									<a href="https://drive.google.com/file/d/1WfV4HmM83Jo4nEnfllH9yh9P6vluDni7/view?usp=sharing" class="image fit"><img src="images/facee.jfif" alt="" /></a>
+									<p>Brandy- an AI which has the following capabilities:<br />
+
+										1) Weather report of current as well as any place.<br />
+										2) full music control via voice<br />
+										3) writing documents via voice.</p>
+									<ul class="actions special">
+										<li><a href="https://github.com/Sobhagya12/Brandy-the-AI.git" class="button">Git Code</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										<h2>Analyzing Game Sales<br />
+										on STEAM</h2>
+									</header>
+									<a href="https://drive.google.com/file/d/1g8tRu_n68MyvoekpE30S4Zp3rdUU4bCU/view?usp=sharing" class="image fit"><img src="images/controller2.jfif" alt="" /></a>
+									<p>An academic project where we try to solve a business problem regarding how demand of games can be increased on STEAM platform by leveraging various variables using Python, Web Scraping, Regression, Natural Language Processing, Image processing and A/B testing</p>
+									<ul class="actions special">
+										<li><a href="https://github.com/Sobhagya12/Analyzing-Game-Sales-On-STEAM" class="button">Git Code</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										<h2>Analyzing and Predicting<br />
+											Infant Mortality</h2>
+									</header>
+									<a href="https://www.youtube.com/watch?v=ufu5QwrKEmE" class="image fit"><img src="images/mombaby.jpg" alt="" /></a>
+									<p>Created a predictive model using decision trees to predict probability of infant mortality in Indiana and developed an R Shiny app showing severity of mortality in different locations</p>
+									<ul class="actions special">
+										<li><a href="https://hemanya.shinyapps.io/HealthyMomAndBabies/" class="button">Shiny App</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										<h2>Prediction of<br />
+										BITCOIN</h2>
+									</header>
+									<a href="https://drive.google.com/file/d/1KL9NWk7-8vIrBrWTM_YeP4bCrDds2j69/view?usp=sharing" class="image fit"><img src="images/bitcoin.jfif" alt="" /></a>
+									<p>An academic project where we perused historical data of BITCOIN price and used ARIMA modelling to create a model predict BITCOIN price using python Google Cloud Platform, Hadoop(Mapper and Reducer) and Hive.</p>
+									<ul class="actions special">
+										<li><a href="https://github.com/Sobhagya12/Predicting-BITCOIN.git" class="button">Git Code</a></li>
+									</ul>
+								</article>
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+
+					<footer id="footer">
+
+						<section class="posts">
+							<header class="major">
+								<h1 style="color:black">More about me</h1>
+							</header>
+						<section class="split contact">
+							<section class="alt">
+								<h2 style="color:black";>Work Experience</h2>
+								<p style="color:black"><u><b style="color:black">Fortune 500 CPG company</b></u> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Jan 2020 - March 2020<br />
+								<i><b style="color:black">Data Sciene Analyst</b></i><br />
+								Built end-to-end project from exploration to implementation to help an eCommerce business understand online product profitability and take business actions<br />
+								in marketing, supply chain and vendor negotiations<br />
+								• Built and tested python code to automatedly restructure two commercial data sources via Extract and Transform. Data was treated for redundant and missing<br />
+								  &nbsp &nbsp values and number of rows reduced by 85 %<br />
+								• Collaborated with the commercial team to create a dynamic profitability equation for products on the amazon platform <br />
+								• Created an automated Tableau front-end dashboard to identify the most and least profitable products by visualizing SKU-level profitability and time-variant<br />
+								  &nbsp &nbsp profitability trends providing insights to ecommerce team</br />
+								• Performed feature engineering, including dimensionality reduction and feature selection and built ARIMA and LSTM</br />
+								  &nbsp &nbsp models to predict future sales. Recommend optimizations and projected increase in profitability by 10%</br /></p>
+								<p style="color:black"><u><b style="color:black">New Jhelum Company</b></u> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Dec 2018 - April 2019<br />
+								<i><b style="color:black">Data Analyst</b></i><br />
+								• Extracted, transformed, and combined data from various data sources using Tableau Prep Workflow<br />
+								• Performed ad-hoc analysis identifying Key metrics and created dashboards to help make informed business decisions<br />
+								• Used quantitative methods to determine the principal drivers of cost, optimized processes and saved $11000<br /></p>
+							 	<p style="color:black"><u><b style="color:black">New Jhelum Company</b></u> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp July 2018 - Nov 2018<br />
+								<i><b style="color:black">Data Analyst</b></i><br />
+								• Analyzed costs, prepared reports and created dashboards to monitor KPIs and provide insights to internal organization</p>
+								<p style="color:black"><u><b style="color:black">Deepak Power Storage Enterprise</b></u> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Jan 2018 - June 2018<br />
+								<i><b style="color:black">Intern</b></i><br />
+								• Analyzed performance of batteries, with different compositions, to facilitate product development
+								</p>
+						</section>
+
+						<section class="split contact">
+							<section class="alt">
+								<h2 style="color:black">Education</h2>
+								<p style="color:black"><u><b style="color:black">Purdue University, Kranert School of Management</b></u>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp May 2020<br />
+								<i><b style="color:black">Master of Science in Business Analytics and Information Management</b></i> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp West Lafayette, IN<br />
+								• Awarded merit based scholarship<br />
+								• Dean's List Fall 2019<br /></p>
+								<p style="color:black"><u><b style="color:black">Panjab University</b></u> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp June 2018<br />
+								<i><b style="color:black">Bachelors of Science in Mechanical Enigineering</b></i> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Punjab, India<br />
+								• Secured 5th Position in class<br />
+								• Awarded Honors Degree</p>
+						</section>
+							<section class="split contact">
+							<section class="alt">
+								<h2 style="color:black">Certifications/Badges</h2>
+								<ul class="icons alt">
+									<li><a href="https://www.datacamp.com/statement-of-accomplishment/course/bf210d611f58fdd02f0e67d07da62ea13c86a48e" class="button"><span class="label">SQL - Intro</span></a></li>
+									<li><a href="https://www.datacamp.com/statement-of-accomplishment/course/c1b0a0c64d9fe46d5fca5a283dc60c0626761406" class="button"><span class="label">SQL - Intermediate</span></a></li>
+									<li><a href="https://www.datacamp.com/statement-of-accomplishment/course/b37cbf19057e06bae033297c6466eed9e3d8ea84" class="button"><span class="label">SQL - Joining Data</span></a></li>
+									<li><a href="https://www.youracclaim.com/badges/086ad728-cadd-4e68-af43-118b20f610db/public_url" class="button"><span class="label">SAS - Essentials</span></a></li>
+									<li><a href="https://www.youracclaim.com/badges/479581ca-f2b8-4de6-b535-dbbc98c0108e/linked_in_profile" class="button"><span class="label">SAS - Optimization</span></a></li>
+									<br></br>
+									<li><a href="https://www.datacamp.com/statement-of-accomplishment/course/567cf85d75f49fcb645202974a213d93657b20e6" class="button"><span class="label">R - Introduction</span></a></li>
+									<li><a href="https://drive.google.com/file/d/1sfoHh63n1Njqk0e0RSjsEcCLEiSxM1Gy/view?usp=sharing" class="button"><span class="label">NVIDIA - Deep Learning (NLP)</span></a></li>
+									<li><a href="https://analytics.google.com/analytics/academy/certificate/sBVN7Sy_Sk2EtTD0teFWZQ" class="button"><span class="label">Google Analytics - Beginners</span></a></li>
+								</ul>
+						</section>
+
+							<ul class="actions special">
+								<li><a href="#header" class="button icon solid solo fa-arrow-up scrolly"></a></li>
+							</ul>
+
+						</section>
+					</footer>
+
+				<!-- Footer -->
+
+
+					<footer id="footer">
+
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>West Lafayette, IN 47906</p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">sobhagya1210@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/sobhagya12/" class="icon brands alt fa-linkedin"><span class="label">Twitter</span></a></li>
+									<li><a href="https://github.com/Sobhagya12" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Sobhagya</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+
+	</body>
+</html>

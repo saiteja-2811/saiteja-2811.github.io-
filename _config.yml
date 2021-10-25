@@ -19,7 +19,8 @@ description: "Pasula's Ponderings"
 # --- Navigation bar options --- #
 # List of links in the navigation bar
 navbar-links:
-  Posts: "https://saiteja-2811.github.io"
+  Projects : "https://saiteja-2811.github.io/"
+  Articles: "posts"
   About Me: "aboutme"
   Download Resume: "https://saiteja-2811.github.io/resume/Resume - Sai Teja Pasula.pdf"
   Code Stack: "https://github.com/saiteja-2811"
