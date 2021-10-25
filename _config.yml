@@ -21,7 +21,7 @@ description: "Pasula's Ponderings"
 navbar-links:
   Posts: "https://saiteja-2811.github.io"
   About Me: "aboutme"
-  Resources: "datascienceresources"
+  Hire me: "https://saiteja-2811.github.io/resume/Resume - Sai Teja Pasula.pdf"
   Code Stack: "https://github.com/saiteja-2811"
 
 # Image to show in the navigation bar - image must be a square (width = height)
