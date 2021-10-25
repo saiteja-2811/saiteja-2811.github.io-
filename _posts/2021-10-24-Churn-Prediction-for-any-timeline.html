@@ -1,27 +1,50 @@
 ---
 layout: post
-title: Churn Prediction for any Timelines
-excerpt: It takes a machine to catch a thief
-permalink: /Detection-of-Fraudulent-Transactions
+title: Churn Prediction for any Timeline
+excerpt: What is Churn Rate and why is it important ?
+permalink: /Churn-Prediction-for-any-Timeline
 publish: true
-tags: [datascience, telecom, churn, machinelearning,]
-images:
-  - url: /images/creditcard_fraud/cardthief.gif
+tags: [datascience, telecom, churn, machine learning]
 ---
 <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 
-<h2><span style="text-decoration: underline;"><strong>Introduction</strong></span></h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Banking and financial institutions are facing severe challenges due to fraudulent transactions. 2015 alone saw a $21.84 billion fraud losses on credit, debit and prepaid cards. An article published in <a href = "https://www.forbes.com/sites/rogeraitken/2016/10/26/us-card-fraud-losses-could-exceed-12bn-by-2020/" target="_blank">Forbes</a> predicts that this could grow by 45% by 2020. Traditional approach of using rules and authenticating transactions is no longer a viable method due to the plethora of payment channels and adept criminals. Machine learning enables to detect and recognize patterns on customer’s purchase history efficiently even on larger datasets.  Using machine learning for fraud detection is no longer a trend, it’s a necessity.</p>
-<p>In this post, we will be looking at implementing a logistic regression model for detecting fraudulent credit card transactions. 
+<h1> Churn Prediction for any Timeline</h1>
+
+<h2><span style="text-decoration: underline;"><strong>What is Churn Rate and why is it important ?</strong></span></h2>
+<p>
+  “Churn Rate” is the percentage of customers that left your service during a certain time frame. For example, if you got 1000 customers and lost 50 last month, then your monthly churn rate is 5 percent. If you are a business based on a subscription model, One of the most important metrics to track is the “Customers’ Churn Rate” because acquiring a new customer can cost five times more than retaining an existing customer. So, no matter how good a company’s product or service may be, it’s essential that they monitor their customers’ churn rate and should invest time to retain them.
+</p>
+<img src="images/Churn/acq_cost.png">
+<p>But, realizing the importance of tracking the churn rate is not going to stop the customers from churning. The retention strategy teams need to foresee when would a customer churn and design strategies on how to stop them. The following steps are going to provide you with a framework on how to predict the churn rate for any timeline.</p>
+
+<h2><span style="text-decoration: underline;"><strong>Context & Background</strong></span></h2>
+<p>Before we deep dive into the churn prediction methodology, let me provide some context and clarify the jargon I will be using in this article. Imagine if you are working as a Data Scientist for an internet service provider with 4 million active customers. In the month of October 2021 (T), you are assigned the task of segmenting your customers into high, medium, and low-risk ones based on their churn probability for the next three months i.e. from Oct-Dec 2021.</p>
+
+<h2><span style="text-decoration: underline;"><strong>Methodology</strong></span></h2>
+<p>Cutoff Point & Performance Window are two commonly used terms in every churn analysis no matter what industry you are working in.</p>
+<li>Cutoff Point is the difference between the present date(T) and the time period you want to foresee the churn probabilities. In our case, it is 1st July 2021 because we go back three months from 1st Oct 2021.</li>
+<li>The performance window is the time gap between the cutoff point and the present date. 1st July 2021 to 30th Sep 2021 in our case.</li>
+<img src="images/Churn/timeline.png">
+
+<h2><span style="text-decoration: underline;"><strong>Timelines & Data Collection</strong></span></h2>
+<p>
+  In the above figure, we have fixed the timeline of the data. The oldest 12 months are used to create independent variables and the next three months are used to create the dependent variable at the cutoff point(churned in 3 months or not). I have only selected 12 months to avoid data leakage from the future 3 months.
+</p>
+<p>
+Data Collection is one of the interesting parts of this project because this is where the team collaborates and combines different viewpoints to finalize what factors might impact the customers' churn. I have listed down a few factors that would impact the churn significantly. Customer demographics like Region, Acquisition channel, FICO score, Premium customer or not, Number of payments missed historically, Payment Type, Internet usage, Call center complaints, Number of Upgrades, Months of Service commitment left.
+<p/>
+<p>
+  The next steps would be to explore the data to find trends and shortlist the variables through variable selection techniques. This would be followed by partitioning the data into train and validation to avoid over-fitting. The final output would be to get the probabilities of the churn for every active customer on the 1st of October 2021.
 </p>
 
+<h2><span style="text-decoration: underline;"><strong>Segmentation & Monitoring</strong></span></h2>
+<p>Once we have the churn probabilities, I looked at the distribution of the probabilities and segmented the customers into three buckets (High, Medium & Low risk). But this model needs to be monitored every month to use the latest data and shift every point in the timelines by 1 month forward. For example, If we want to use this model in November 2021, the 15 months past (H) starts from 1st August 2020.</p>
 
-<h2><span style="text-decoration: underline;"><strong>Dataset</strong></span></h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The dataset used in this post is from <a href = "https://www.kaggle.com/mlg-ulb/creditcardfraud/home" target="_blank">Kaggle</a>. It consists of credit card transactions of two days belonging to European cardholders. Due to confidentiality issues, the original features were transformed to principal components. The features given in the dataset consists of 28 principal components along with the variables, time and amount. 'Time' is the time difference in seconds between each transaction and the first transaction in the dataset. 'Amount' refers to the transaction amount. The response variable, ‘Class’ is a binary variable indicating 1 for fraudulent transaction and 0 otherwise.
+<h2><span style="text-decoration: underline;"><strong>Conclusion</strong></span></h2>
+<p>
+  I have provided an example for an internet service provider. But the above approach can be followed across any industry with a subscription-based business model like <a href="https://www.netflix.com/">Netflix</a>,<a href="https://airbnb.com">Airbnb</a>
 </p>
 
-
-<img src="images/creditcard_fraud/code15.PNG">
-<img src="images/creditcard_fraud/code16.PNG">
-<p>The recall and F-1 score are satisfactory. The ROC is also closer towards the top border indicating the model is effective.</br>
-Can think of any other ways to predict fraudulent transactions? Build the model and let me know the recall value in the comments!</p>
+<p>
+  Thanks for reading. Kindly email me your suggestions at saitejapasula@gmail.com
+</p>
