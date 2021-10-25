@@ -21,12 +21,12 @@ description: "Pasula's Ponderings"
 navbar-links:
   Posts: "https://saiteja-2811.github.io"
   About Me: "aboutme"
-  Hire me: "https://saiteja-2811.github.io/resume/Resume - Sai Teja Pasula.pdf"
+  Download Resume: "https://saiteja-2811.github.io/resume/Resume - Sai Teja Pasula.pdf"
   Code Stack: "https://github.com/saiteja-2811"
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
-avatar: "/img/Test.png"
+avatar: "/img/PST.png"
 
 # If you want to have an image logo in the top-left corner instead of the title text,
 # then specify the following parameter
